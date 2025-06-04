@@ -1,0 +1,40 @@
+{% extends "./base.html" %}
+
+
+{% block title%} Edicion de Quejas {% endblock%}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h2>Edicion de Quejas</h2>
+            <div class="card">
+                <div class="card-body">
+                    <form action="/editarQueja/" method="POST">{% csrf_token %}
+                        <div class="form-group mb-3">
+                            <input type="text" id="txtCodigo" name="txtCodigo" value="{{queja.codigo}}" class="form-control" placeholder="codigo"
+                            minlength="6" maxlength="6" readonly > 
+                        </div>
+                        <div class="form-group mb-3">
+                            <input type="text" id="txtNombre" name="txtNombre" value="{{queja.nombre}}" class="form-control" placeholder="nombre"
+                            maxlength="30" required> 
+                        </div>
+                        <div class="form-group mb-3">
+                            <input type="text" id="txtMensaje" name="txtMensaje" value="{{queja.mensaje}}" class="form-control" placeholder="mensaje"
+                                maxlength="500" required> 
+                        </div>
+                        <div class="form-group mb-3">
+                            <input type="number" id="numPiso" name="numPiso"  value="{{queja.piso}}" class="form-control" min="1000" max="9999" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <button type="submit" class="btn btn-success w-100 text-white">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
